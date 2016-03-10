@@ -1,0 +1,126 @@
+Server Name
+**************************************
+ip-172-31-56-245
+
+Disk Usage Report
+**************************************
+Filesystem      Size  Used Avail Use% Mounted on
+udev            492M   12K  492M   1% /dev
+tmpfs           100M  332K   99M   1% /run
+/dev/xvda1      7.8G  1.3G  6.2G  17% /
+none            4.0K     0  4.0K   0% /sys/fs/cgroup
+none            5.0M     0  5.0M   0% /run/lock
+none            497M     0  497M   0% /run/shm
+none            100M     0  100M   0% /run/user
+
+List of Hadrware attached to the server
+**************************************
+[1;34mSystem:   [0;37m [1;34mHost:[0;37m ip-172-31-56-245 [1;34mKernel:[0;37m 3.13.0-74-generic x86_64 (64 bit, [1;34mgcc:[0;37m 4.8.2) 
+[1;34m          [0;37m [1;34mConsole:[0;37m tty 0 [1;34mDistro:[0;37m Ubuntu 14.04 trusty
+[1;34mMachine:  [0;37m [1;34mSystem:[0;37m Xen [1;34mproduct:[0;37m HVM domU [1;34mversion:[0;37m 4.2.amazon [1;34mserial:[0;37m ec22a265-2fca-8350-5191-255d12875dbf 
+[1;34m          [0;37m [1;34mMobo:[0;37m N/A [1;34mmodel:[0;37m N/A [1;34mBios:[0;37m Xen [1;34mversion:[0;37m 4.2.amazon [1;34mdate:[0;37m 12/07/2015
+[1;34mCPU:      [0;37m [1;34mSingle core[0;37m Intel Xeon CPU E5-2676 v3 (-MCP-)[0;37m [1;34mcache:[0;37m 30720 KB [1;34mflags:[0;37m (lm nx sse sse2 sse3 sse4_1 sse4_2 ssse3) [1;34mbmips:[0;37m 4800.09[0;37m [1;34mclocked at[0;37m 2400.048 MHz[0;37m 
+[1;34mGraphics: [0;37m [1;34mCard:[0;37m Cirrus Logic GD 5446 [1;34mbus-ID:[0;37m 00:02.0 
+[1;34m          [0;37m [1;34mX-Vendor:[0;37m N/A [1;34mdriver:[0;37m N/A [1;34mtty size:[0;37m 0x0 [1;34mAdvanced Data:[0;37m N/A for root out of X
+[1;34mNetwork:  [0;37m [1;34mCard:[0;37m Failed to Detect Network Card! 
+[1;34mDrives:   [0;37m [1;34mHDD Total Size:[0;37m 8.6GB (15.1% used) [1;34m1:[0;37m [1;34mid:[0;37m /dev/xvda [1;34mmodel:[0;37m N/A [1;34msize:[0;37m 8.6GB 
+[1;34mPartition:[0;37m [1;34mID:[0;37m / [1;34msize:[0;37m 7.8G [1;34mused:[0;37m 1.3G (17%) [1;34mfs:[0;37m ext4 
+[1;34mRAID:     [0;37m No RAID devices detected - /proc/mdstat and md_mod kernel raid module present
+[1;34mSensors:  [0;37m None detected - is lm-sensors installed and configured?
+[1;34mInfo:     [0;37m [1;34mProcesses:[0;37m 110 [1;34mUptime:[0;37m 6 days [1;34mMemory:[0;37m 96.5/992.5MB[0;37m [1;34mRunlevel:[0;37m 2 [1;34mGcc sys:[0;37m 4.8.4 [1;34mClient:[0;37m Shell (sh) [1;34minxi:[0;37m 1.9.17[0;37m [0;37m
+[0m
+
+Server logs
+**************************************
+ 
+ ################### Logwatch 7.4.0 (05/29/13) #################### 
+        Processing Initiated: Thu Mar 10 17:24:17 2016
+        Date Range Processed: between yesterday and today
+                              ( 2016-Mar-09 / 2016-Mar-10 )
+                              Period is day.
+        Detail Level of Output: 0
+        Type of Output/Format: stdout / text
+        Logfiles for Host: ip-172-31-56-245
+ ################################################################## 
+ 
+ --------------------- dpkg status changes Begin ------------------------ 
+
+ Installed:
+    fontconfig-config:all 2.11.0-0ubuntu4.1
+    fonts-dejavu-core:all 2.34-1ubuntu1
+    hddtemp:amd64 0.3-beta15-52
+    inxi:all 1.9.17-1
+    iproute:all 1:3.12.0-2ubuntu1
+    libdate-manip-perl:all 6.42-1
+    libdrm-intel1:amd64 2.4.64-1~ubuntu14.04.1
+    libdrm-nouveau2:amd64 2.4.64-1~ubuntu14.04.1
+    libdrm-radeon1:amd64 2.4.64-1~ubuntu14.04.1
+    libfontconfig1:amd64 2.11.0-0ubuntu4.1
+    libfontenc1:amd64 1:1.1.2-1
+    libgl1-mesa-dri:amd64 10.1.3-0ubuntu0.6
+    libgl1-mesa-glx:amd64 10.1.3-0ubuntu0.6
+    libglapi-mesa:amd64 10.1.3-0ubuntu0.6
+    libice6:amd64 2:1.0.8-2
+    libllvm3.4:amd64 1:3.4-1ubuntu3
+    libpciaccess0:amd64 0.13.2-1
+    libruby1.9.1:amd64 1.9.3.484-2ubuntu1.2
+    libsensors4:amd64 1:3.3.4-2ubuntu1
+    libsm6:amd64 2:1.2.1-2
+    libtxc-dxtn-s2tc0:amd64 0~git20131104-1.1
+    libx11-xcb1:amd64 2:1.6.2-1ubuntu2
+    libxaw7:amd64 2:1.0.12-1
+    libxcb-dri2-0:amd64 1.10-2ubuntu1
+    libxcb-dri3-0:amd64 1.10-2ubuntu1
+    libxcb-glx0:amd64 1.10-2ubuntu1
+    libxcb-present0:amd64 1.10-2ubuntu1
+    libxcb-shape0:amd64 1.10-2ubuntu1
+    libxcb-sync1:amd64 1.10-2ubuntu1
+    libxcomposite1:amd64 1:0.4.4-1
+    libxcursor1:amd64 1:1.1.14-1
+    libxdamage1:amd64 1:1.1.4-1ubuntu1
+    libxfixes3:amd64 1:5.0.1-1ubuntu1.1
+    libxft2:amd64 2.3.1-2
+    libxi6:amd64 2:1.7.1.901-1ubuntu1.1
+    libxinerama1:amd64 2:1.1.3-1
+    libxmu6:amd64 2:1.1.1-1
+    libxpm4:amd64 1:3.5.10-1
+    libxrandr2:amd64 2:1.4.2-1
+    libxrender1:amd64 1:0.9.8-1build0.14.04.1
+    libxshmfence1:amd64 1.1-2
+    libxt6:amd64 1:1.1.4-1
+    libxtst6:amd64 2:1.2.2-1
+    libxv1:amd64 2:1.0.10-1
+    libxxf86dga1:amd64 2:1.1.4-1
+    libxxf86vm1:amd64 1:1.1.3-1
+    lm-sensors:amd64 1:3.3.4-2ubuntu1
+    logwatch:all 7.4.0+svn20130529rev144-1ubuntu1
+    mesa-utils:amd64 8.1.0-2
+    postfix:amd64 2.11.0-1ubuntu1
+    rkhunter:all 1.4.0-3
+    ruby1.9.1:amd64 1.9.3.484-2ubuntu1.2
+    ruby:all 1:1.9.3.4
+    ssl-cert:all 1.0.33
+    unhide.rb:all 22-1
+    x11-common:all 1:7.7+1ubuntu8.1
+    x11-utils:amd64 7.7+1
+    x11-xserver-utils:amd64 7.7+2ubuntu1
+ 
+ ---------------------- dpkg status changes End ------------------------- 
+
+ 
+ --------------------- SSHD Begin ------------------------ 
+
+ 
+ Users logging in through sshd:
+    ubuntu:
+       111.93.250.22 (static-22.250.93.111-tataidc.co.in): 12 times
+ 
+ 
+ Received disconnect:
+    11: disconnected by user : 10 Time(s)
+ 
+ ---------------------- SSHD End ------------------------- 
+
+ 
+ ###################### Logwatch End ######################### 
+

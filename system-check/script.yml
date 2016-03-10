@@ -1,0 +1,55 @@
+---
+- hosts: all
+  remote_user: ubuntu
+  become: yes
+  tasks:
+   - name: hostname
+     shell: hostname
+     register: hn
+   - name: Disk Usage
+     shell: df -h
+     register: disk_usage
+   - name: Server Logs check
+     shell: logwatch --service smartd --service kernel --service sshd --service yum --service dpkg --detail Low --range "between Yesterday and Today"
+     register: server_logs
+   - name: Hardware specification
+     shell: inxi -Fx
+     register: hwspc
+#   - name: Install required packages
+   - apt: name=logwatch,rkhunter,inxi state=latest update_cache=yes
+     when: ansible_pkg_mgr == "apt"
+   - yum: name=logwatch,rkhunter,inxi state=latest
+     when: ansible_pkg_mgr == "yum"
+   - name: Create a local file
+     local_action: shell echo 'Server Name' | tee output.txt
+   - name: Margin
+     local_action: shell echo '**************************************' | tee -a output.txt
+   - name : update hostname
+     local_action: shell echo '{{ hn.stdout }}' | tee -a output.txt
+   - name: Blank Line
+     local_action: shell echo '' | tee -a output.txt
+   - name: Disk Usage
+     local_action: shell echo 'Disk Usage Report' | tee -a output.txt
+   - name: Margin
+     local_action: shell echo '**************************************' | tee -a output.txt
+   - name: update the Disk Usage Values
+     local_action: shell echo '{{ disk_usage.stdout }}' | tee -a output.txt
+   - name: Blank Line
+     local_action: shell echo '' | tee -a output.txt
+   - name: Server spec
+     local_action: shell echo 'List of Hadrware attached to the server' | tee -a output.txt
+   - name: Margin
+     local_action: shell echo '**************************************' | tee -a output.txt
+   - name: update the hwspc
+     local_action: shell echo '{{ hwspc.stdout }}' | tee -a output.txt
+   - name: Blank Line
+     local_action: shell echo '' | tee -a output.txt
+   - name: Server Logs in server
+     local_action: shell echo 'Server logs' | tee -a output.txt
+   - name: Margin
+     local_action: shell echo '**************************************' | tee -a output.txt
+   - name: Update the server logs
+     local_action: shell echo '{{ server_logs.stdout }}' | tee -a output.txt
+   - name: Blank Line
+     local_action: shell echo '' | tee -a output.txt
+...
