@@ -1,6 +1,6 @@
 ---
 - hosts: all
-  remote_user: ubuntu
+  remote_user: ec2-user
   become: yes
   tasks:
    - name: hostname
@@ -9,17 +9,30 @@
    - name: Disk Usage
      shell: df -h
      register: disk_usage
+   - name: Make empty rhkhunter log file
+     shell: cat /dev/null > /var/log/rkhunter.log
+#     shell: >/var/log/rkhunter/rkhunter.log
+   - yum: name=logwatch,rkhunter state=latest
+     when: ansible_pkg_mgr == "yum"
    - name: Server Logs check
-     shell: logwatch --service smartd --service kernel --service sshd --service yum --service dpkg --detail Low --range "between Yesterday and Today"
+     shell: logwatch --service smartd --service kernel --service sshd --service yum --service dpkg --detail Low --range "between Yesterday and Today" --print | sed -n '/Unmatched Entries/,/SSHD/!p'
      register: server_logs
    - name: Hardware specification
      shell: inxi -Fx
      register: hwspc
 #   - name: Install required packages
-   - apt: name=logwatch,rkhunter,inxi state=latest update_cache=yes
+   - apt: name=logwatch,rkhunter state=latest update_cache=yes
      when: ansible_pkg_mgr == "apt"
-   - yum: name=logwatch,rkhunter,inxi state=latest
+   - yum: name=logwatch,rkhunter state=latest
      when: ansible_pkg_mgr == "yum"
+   - name: malware check
+     shell: rkhunter --update && rkhunter -sk -c -l /var/log/rkhunter.log
+     register: rk
+     failed_when: rk.rc >2
+     ignore_errors: yes
+   - name: malware log write
+     shell: sed -n '/System checks summary/,$ s/\[.*\]//g p' /var/log/rkhunter.log
+     register: mal
    - name: Create a local file
      local_action: shell echo 'Server Name' | tee output.txt
    - name: Margin
@@ -45,11 +58,17 @@
    - name: Blank Line
      local_action: shell echo '' | tee -a output.txt
    - name: Server Logs in server
-     local_action: shell echo 'Server logs' | tee -a output.txt
+     local_action: shell echo 'SERVER LOGS' | tee -a output.txt
    - name: Margin
      local_action: shell echo '**************************************' | tee -a output.txt
    - name: Update the server logs
      local_action: shell echo '{{ server_logs.stdout }}' | tee -a output.txt
    - name: Blank Line
      local_action: shell echo '' | tee -a output.txt
+   - name: Malware Heading
+     local_action: shell echo 'Malware scanning Report' | tee -a output.txt
+   - name: Magin
+     local_action: shell echo '**************************************' | tee -a output.txt
+   - name: update Malware   
+     local_action: shell echo '{{ mal.stdout }}' | tee -a output.txt
 ...
